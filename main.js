@@ -116,7 +116,11 @@ for (let i = 0; i < formData.length; i++) {
       newOption.appendChild(optionContent);
     }
     formArea.appendChild(newSelect);
-  } else {
+  } else if (formData[i].type === "textarea") {
+    let newArea = document.createElement("textarea");
+    newArea.setAttribute("id", formData[i].id);
+    formArea.appendChild(newArea);
+  }else {
     let newInput = document.createElement("input");
     newInput.setAttribute("type", formData[i].type);
     newInput.setAttribute("id", formData[i].id);
