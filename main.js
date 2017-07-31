@@ -96,5 +96,30 @@ let formData = [
 
 
 // -------- Your Code Goes Below this Line --------
+let formArea = document.getElementById("fields");
 
+for (let i = 0; i < formData.length; i++) {
+  let newLabel = document.createElement("label");
+  let labelContent = document.createTextNode(formData[i].label);
+  newLabel.setAttribute("for", formData[i].id);
+  formArea.appendChild(newLabel);
+  newLabel.appendChild(labelContent);
 
+  if (formData[i].type === "select") {
+    let newSelect = document.createElement("select");
+    newSelect.setAttribute("id", formData[i].id);
+    for (let j = 0; j < formData[i].options.length; j++) {
+      let newOption = document.createElement("option");
+      let optionContent = document.createTextNode(formData[i].options[j].label);
+      newOption.setAttribute("value", formData[i].options[j].value);
+      newSelect.appendChild(newOption);
+      newOption.appendChild(optionContent);
+    }
+    formArea.appendChild(newSelect);
+  } else {
+    let newInput = document.createElement("input");
+    newInput.setAttribute("type", formData[i].type);
+    newInput.setAttribute("id", formData[i].id);
+    formArea.appendChild(newInput);
+  }
+}
