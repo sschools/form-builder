@@ -110,12 +110,15 @@ for (let i = 0; i < formData.length; i++) {
     let newSelect = document.createElement("select");
     newSelect.setAttribute("id", formData[i].id);
     newSelect.setAttribute("placeholder", formData[i].label);
+
     let newOption = document.createElement("option");
     let optionContent = document.createTextNode(formData[i].label + "...");
     newOption.setAttribute("disabled", true);
     newOption.setAttribute("selected", true);
+
     newSelect.appendChild(newOption);
     newOption.appendChild(optionContent);
+
     for (let j = 0; j < formData[i].options.length; j++) {
       newOption = document.createElement("option");
       optionContent = document.createTextNode(formData[i].options[j].label);
@@ -123,17 +126,31 @@ for (let i = 0; i < formData.length; i++) {
       newSelect.appendChild(newOption);
       newOption.appendChild(optionContent);
     }
+
     formArea.appendChild(newSelect);
+
   } else if (formData[i].type === "textarea") {
+
     let newArea = document.createElement("textarea");
+
     newArea.setAttribute("id", formData[i].id);
     newArea.setAttribute("placeholder", formData[i].label);
+
     formArea.appendChild(newArea);
+
   }else {
     let newInput = document.createElement("input");
+
+    /*
+    let newIcon = document.createElement("i");
+    newIcon.setAttribute("class", formData[i].icon);
+    let testArray = [newIcon, formData[i].label];
+    let newString = testArray.join(" ");
+    */
     newInput.setAttribute("type", formData[i].type);
     newInput.setAttribute("id", formData[i].id);
     newInput.setAttribute("placeholder", formData[i].label);
+
     formArea.appendChild(newInput);
   }
 }
